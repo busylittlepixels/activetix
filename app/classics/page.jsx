@@ -6,7 +6,7 @@ export const metadata = {
 };
 
 const explainer = `
-Some classic (and much-loved) Netlify features were born when most sites we hosted were fully static.
+Pox. Some classic (and much-loved) Netlify features were born when most sites we hosted were fully static.
 For example, [Netlify Forms](https://docs.netlify.com/forms/setup/) do their magic based on automatic detection of specially-marked form tags in static HTML files. 
 
 This has [required some adjustments](https://docs.netlify.com/forms/setup/#javascript-forms) for the age of SPA and SSR. 
