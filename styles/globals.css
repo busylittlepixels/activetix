@@ -40,6 +40,68 @@
 }
 
 @layer components {
+    /* Code block styling */
+    .code-block-wrapper {
+        @apply overflow-hidden bg-neutral-900 rounded-md text-neutral-100 mb-4;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .code-block-title {
+        @apply px-4 py-2 text-sm font-medium bg-neutral-800 border-b border-neutral-700;
+    }
+
+    .code-block-wrapper pre {
+        @apply p-4 overflow-x-auto text-sm;
+    }
+
+    .code-block-wrapper code {
+        @apply font-mono text-neutral-100;
+        background: transparent;
+    }
+
+    /* GSAP Animation Classes */
+    .text-gradient {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-teal-300;
+    }
+
+    .hero-section {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(43, 220, 210, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+        animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .animate-pulse {
+        animation: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 0.1;
+        }
+        50% {
+            opacity: 0.3;
+        }
+    }
+
     .markdown {
         > * {
             @apply my-4;

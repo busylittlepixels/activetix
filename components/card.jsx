@@ -1,3 +1,5 @@
+'use client';
+
 export function Card({ title, children, className }) {
     return (
         <div className={['bg-white rounded-sm text-neutral-600', className].filter(Boolean).join(' ')}>

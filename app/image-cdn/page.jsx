@@ -1,13 +1,14 @@
+'use client';
+
 import Image from 'next/image';
 import { ImageWithSizeOverlay } from './image-with-size-overlay';
 import { ContextAlert } from 'components/context-alert';
 import { Markdown } from 'components/markdown';
 import { getNetlifyContext } from 'utils';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 
-export const metadata = {
-    title: 'Image CDN'
-};
-
+// Metadata needs to be in a separate layout file for client components
 const sampleImage = '/images/corgi.jpg';
 
 const ctx = getNetlifyContext();
@@ -52,22 +53,72 @@ detection, so format is set to WebP.
 `;
 
 export default function Page() {
+    const titleRef = useRef(null);
+    const imageRef = useRef(null);
+    const compareRef = useRef(null);
+    const sectionsRef = useRef([]);
+
+    useEffect(() => {
+        // Animate title
+        gsap.fromTo(titleRef.current,
+            { opacity: 0, y: -20 },
+            { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
+        );
+
+        // Animate sections
+        const sections = sectionsRef.current;
+        if (sections.length) {
+            sections.forEach((section, i) => {
+                gsap.fromTo(section,
+                    { opacity: 0, y: 30 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        delay: 0.2 + (i * 0.2),
+                        ease: "power3.out"
+                    }
+                );
+            });
+        }
+
+        // Animate the image appearance
+        if (imageRef.current) {
+            gsap.fromTo(imageRef.current,
+                { scale: 0.9, opacity: 0 },
+                { scale: 1, opacity: 1, duration: 1, delay: 0.5, ease: "elastic.out(1, 0.5)" }
+            );
+        }
+
+        // Animate the comparison slider
+        if (compareRef.current) {
+            gsap.fromTo(compareRef.current,
+                { opacity: 0 },
+                { opacity: 1, duration: 1, delay: 0.8, ease: "power2.inOut" }
+            );
+        }
+    }, []);
+
+    const addToRefs = (el) => {
+        if (el && !sectionsRef.current.includes(el)) {
+            sectionsRef.current.push(el);
+        }
+    };
+
     return (
         <div className="flex flex-col gap-12 sm:gap-16">
             <section>
                 <ContextAlert
-                    addedChecksFunction={(ctx) => {
-                        return ctx === 'dev' ? devModeWarning : null;
-                    }}
+                    warningMessage={devModeWarning}
                     className="mb-6"
                 />
-                <h1>Image CDN</h1>
+                <h1 ref={titleRef}>Image CDN</h1>
             </section>
-            <section>
+            <section ref={addToRefs}>
                 <h2 className="mb-6">Using next/image component</h2>
                 <Markdown content={nextImageSnippet} className="mb-8" />
-                <figure>
-                    <div className="relative overflow-hidden border-2 border-white rounded-lg aspect-3/2">
+                <figure ref={imageRef} className="transition-all">
+                    <div className="relative overflow-hidden border-2 border-white rounded-lg aspect-3/2 shadow-lg">
                         <Image
                             src="/images/corgi.jpg"
                             priority
@@ -89,11 +140,12 @@ export default function Page() {
                     </figcaption>
                 </figure>
             </section>
-            <section>
+            <section ref={addToRefs}>
                 <h2 className="mb-6">Original vs. optimized image: can you tell the difference?</h2>
                 <Markdown content={originalVsCdnSnippet} className="mb-8" />
                 <figure
-                    className="relative grid w-full overflow-hidden border-2 border-white rounded-lg select-none diff aspect-3/2"
+                    ref={compareRef}
+                    className="relative grid w-full overflow-hidden border-2 border-white rounded-lg select-none diff aspect-3/2 shadow-lg"
                     tabIndex="0"
                 >
                     <div className="relative col-start-1 row-start-1 overflow-hidden border-r-2 z-1 border-r-white diff-item-1">

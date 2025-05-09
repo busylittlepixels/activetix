@@ -1,11 +1,11 @@
+'use client';
+
 import { ShapeEditor } from './editor';
 import { ContextAlert } from 'components/context-alert';
 import { Markdown } from 'components/markdown';
 import { getNetlifyContext, uploadDisabled } from 'utils';
-
-export const metadata = {
-    title: 'Blobs'
-};
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 
 const explainer = `
 [Netlify Blobs](https://docs.netlify.com/blobs/overview/) provides an object store for any kind of data, be it JSON, binary, 
@@ -37,20 +37,50 @@ User uploads are disabled in this site. To run your own and try it out:
 </a>
 `;
 
-export default async function Page() {
+export default function Page() {
+    const titleRef = useRef(null);
+    const contentRef = useRef(null);
+    const editorRef = useRef(null);
+    
+    useEffect(() => {
+        // Animate title
+        gsap.fromTo(titleRef.current,
+            { opacity: 0, y: -20 },
+            { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
+        );
+        
+        // Animate content
+        if (contentRef.current) {
+            gsap.fromTo(contentRef.current,
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 0.8, delay: 0.3, ease: "power3.out" }
+            );
+        }
+        
+        // Animate editor
+        if (editorRef.current) {
+            gsap.fromTo(editorRef.current,
+                { opacity: 0, scale: 0.9 },
+                { opacity: 1, scale: 1, duration: 1, delay: 0.6, ease: "elastic.out(1, 0.5)" }
+            );
+        }
+    }, []);
+
     return (
         <>
             <ContextAlert
-                addedChecksFunction={(ctx) => {
-                    return uploadDisabled ? uploadDisabledText : null;
-                }}
+                warningMessage={uploadDisabled ? uploadDisabledText : null}
                 className="mb-6"
             />
-            <h1 className="mb-8">Blobs x Blobs</h1>
+            <h1 ref={titleRef} className="mb-8">Blobs x Blobs</h1>
             {!!getNetlifyContext() && (
                 <>
-                    <Markdown content={explainer} className="mb-12" />
-                    <ShapeEditor />
+                    <div ref={contentRef}>
+                        <Markdown content={explainer} className="mb-12" />
+                    </div>
+                    <div ref={editorRef}>
+                        <ShapeEditor />
+                    </div>
                 </>
             )}
         </>

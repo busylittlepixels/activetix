@@ -1,3 +1,5 @@
+'use client';
+
 export function Alert({ children, className, type }) {
     return (
         <div

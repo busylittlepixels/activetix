@@ -1,3 +1,5 @@
+'use client';
+
 import { getNetlifyContext } from 'utils';
 import { Alert } from './alert';
 import { Markdown } from './markdown';
@@ -8,14 +10,14 @@ For full functionality, either run this site locally via \`netlify dev\`
 `;
 
 export function ContextAlert(props) {
-    const { addedChecksFunction, className } = props;
+    const { warningMessage, className } = props;
     const ctx = getNetlifyContext();
 
     let markdownText = null;
     if (!ctx) {
         markdownText = noNetlifyContextAlert;
-    } else if (addedChecksFunction) {
-        markdownText = addedChecksFunction(ctx);
+    } else if (ctx === 'dev' && warningMessage) {
+        markdownText = warningMessage;
     }
 
     if (markdownText) {
