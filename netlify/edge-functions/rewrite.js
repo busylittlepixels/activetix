@@ -1,5 +1,5 @@
 const rewrite = async (request, context) => {
-    const path = context.geo?.country?.code === 'AU' ? '/edge/australia' : '/edge/not-australia';
+    const path = context.geo?.country?.code === 'NL' ? '/edge/netherlands' : '/edge/not-netherlands';
     return new URL(path, request.url);
 };
 
