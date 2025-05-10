@@ -90,7 +90,7 @@ export default function EventsPage() {
     <InnerPageLayout
       title="Events"
       subtitle="Find and register for the best Events worldwide"
-      headerImage="/images/hero/events-runners.jpg"
+      headerImage="/images/events/boston-marathon.jpg"
     >
       <div className="mb-10">
         <RaceSearch
@@ -99,6 +99,7 @@ export default function EventsPage() {
           cities={cities}
           eventTypes={eventTypes}
           distances={distances}
+          filtersOpenByDefault={true}
         />
       </div>
       
@@ -107,7 +108,7 @@ export default function EventsPage() {
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
         </div>
       ) : displayedEvents.length > 0 ? (
-        <div className="events-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="events-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           {displayedEvents.map((event) => (
             <div key={event.id} className="event-card h-full">
               <EventCard {...event} />

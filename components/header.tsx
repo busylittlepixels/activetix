@@ -70,7 +70,7 @@ export function Header() {
                     : 'bg-transparent py-4'
             }`}
         >
-            <div className="container mx-auto px-6">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <nav className="flex flex-wrap items-center justify-between">
                     <Link href="/" className="flex items-center no-underline">
                         <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 text-transparent bg-clip-text">

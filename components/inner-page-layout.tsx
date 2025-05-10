@@ -93,20 +93,20 @@ export function InnerPageLayout({
     <div className="flex flex-col min-h-screen">
       {/* Header Image Banner */}
       {headerImage && (
-        <div className="relative w-full h-72 md:h-96 overflow-hidden mb-8">
+        <div className="relative w-full h-[40vh] md:h-[50vh] overflow-hidden mb-8">
           <div 
             className="absolute inset-0 bg-cover bg-center" 
             style={{ backgroundImage: `url(${headerImage})` }}
           >
-            <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/40"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black z-10"></div>
           </div>
-          <div className="relative h-full flex flex-col justify-end pb-16">
+          <div className="relative h-full flex flex-col justify-end pb-20 z-20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
               {isEventPage ? (
                 <div className="text-left w-full">
                   <div className="lg:max-w-2/3">
-                    <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold">{title}</h1>
-                    {subtitle && <p className="text-white/80 text-lg md:text-xl mt-3">{subtitle}</p>}
+                    <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-50">{title}</h1>
+                    {subtitle && <p className="text-blue-100 text-lg md:text-xl mt-3">{subtitle}</p>}
                   </div>
                   <div className="flex gap-2 mt-4">
                     <ShareButton platform="facebook" url={currentUrl} title={title} />
@@ -118,8 +118,8 @@ export function InnerPageLayout({
               ) : (
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                   <div className="text-left">
-                    <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold">{title}</h1>
-                    {subtitle && <p className="text-white/80 text-lg md:text-xl mt-3 max-w-2xl">{subtitle}</p>}
+                    <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-50">{title}</h1>
+                    {subtitle && <p className="text-blue-100 text-lg md:text-xl mt-3 max-w-2xl">{subtitle}</p>}
                   </div>
                 </div>
               )}
@@ -134,8 +134,8 @@ export function InnerPageLayout({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {isEventPage ? (
               <div className="text-left">
-                <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold">{title}</h1>
-                {subtitle && <p className="text-white/80 text-lg md:text-xl mt-3">{subtitle}</p>}
+                <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-50">{title}</h1>
+                {subtitle && <p className="text-blue-100 text-lg md:text-xl mt-3">{subtitle}</p>}
                 <div className="flex gap-2 mt-4">
                   <ShareButton platform="facebook" url={currentUrl} title={title} />
                   <ShareButton platform="twitter" url={currentUrl} title={title} />
@@ -146,8 +146,8 @@ export function InnerPageLayout({
             ) : (
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div className="text-left">
-                  <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold">{title}</h1>
-                  {subtitle && <p className="text-white/80 text-lg md:text-xl mt-3 max-w-2xl">{subtitle}</p>}
+                  <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-50">{title}</h1>
+                  {subtitle && <p className="text-blue-100 text-lg md:text-xl mt-3 max-w-2xl">{subtitle}</p>}
                 </div>
               </div>
             )}

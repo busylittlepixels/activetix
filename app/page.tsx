@@ -166,7 +166,7 @@ export default function Page() {
           href: "/events"
         }}
         backgroundType="image"
-        backgroundSrc="/images/hero/marathon-runners.jpg"
+        backgroundSrc="/images/events/boston-marathon.jpg"
       />
       
       {/* Two-column CTA section */}
@@ -207,7 +207,7 @@ export default function Page() {
       <FeaturedRaces />
 
       {/* Full-width image grid */}
-      <section className="w-full mt-32 pb-24">
+      <section className="w-full mt-32">
         <ImageGrid images={gridImages} />
       </section>
 

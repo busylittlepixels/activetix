@@ -16,6 +16,7 @@ interface RaceSearchProps {
   cities: string[];
   eventTypes: string[];
   distances: string[];
+  filtersOpenByDefault?: boolean;
 }
 
 export function RaceSearch({
@@ -23,9 +24,10 @@ export function RaceSearch({
   countries,
   cities,
   eventTypes,
-  distances
+  distances,
+  filtersOpenByDefault = false
 }: RaceSearchProps) {
-  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [filtersOpen, setFiltersOpen] = useState(filtersOpenByDefault);
   const [filters, setFilters] = useState<SearchFilters>({
     keyword: '',
     country: '',
