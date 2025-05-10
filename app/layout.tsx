@@ -22,7 +22,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <body className="antialiased text-white bg-black">
                 <div className="flex flex-col min-h-screen bg-noise">
                     <Header />
-                    <main className="grow pt-16 sm:pt-20">
+                    <main className="grow">
                         {children}
                     </main>
                     <Footer />

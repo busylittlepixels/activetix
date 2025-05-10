@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import githubLogo from 'public/images/github-mark-white.svg';
 
 const navItems = [
     { linkText: 'Home', href: '/' },
@@ -39,6 +38,9 @@ export function Header() {
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleResize);
         
+        // Initial check for scroll position
+        handleScroll();
+        
         return () => {
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('resize', handleResize);
@@ -46,7 +48,6 @@ export function Header() {
     }, []);
 
     // Inject a class to the parent component when menu is open
-    // This will be used in layout.tsx with a global CSS rule
     useEffect(() => {
         const htmlElement = document.documentElement;
         
@@ -63,15 +64,15 @@ export function Header() {
 
     return (
         <header 
-            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+            className={`absolute top-0 left-0 w-full z-50 transition-all duration-300 ${
                 scrolled 
-                    ? 'bg-black/95 backdrop-blur-sm shadow-lg py-2' 
+                    ? 'fixed bg-black/95 backdrop-blur-sm shadow-lg py-2' 
                     : 'bg-transparent py-4'
             }`}
         >
-            <div className="container mx-auto px-6 sm:px-12">
+            <div className="container mx-auto px-6">
                 <nav className="flex flex-wrap items-center justify-between">
-                    <Link href="/" className="flex items-center">
+                    <Link href="/" className="flex items-center no-underline">
                         <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 text-transparent bg-clip-text">
                             Active<span className="text-white">Tix</span>
                         </span>
@@ -110,7 +111,7 @@ export function Header() {
                                     <li key={index}>
                                         <Link 
                                             href={item.href} 
-                                            className={`inline-flex px-1.5 py-1 sm:px-3 sm:py-2 transition-all ${
+                                            className={`inline-flex px-1.5 py-1 sm:px-3 sm:py-2 transition-all no-underline ${
                                                 scrolled 
                                                     ? 'text-white hover:text-blue-300' 
                                                     : 'text-white/90 hover:text-white'
@@ -123,14 +124,14 @@ export function Header() {
                             </ul>
                         )}
                         
-                        <Link
-                            href="https://github.com/netlify-templates/next-platform-starter"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex"
-                        >
-                            <Image src={githubLogo} alt="GitHub logo" className="w-7" />
-                        </Link>
+                        <div className="flex items-center gap-2">
+                            <Link
+                                href="/login"
+                                className="px-4 py-1.5 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-all no-underline"
+                            >
+                                Login
+                            </Link>
+                        </div>
                     </div>
                     
                     {/* Mobile menu overlay */}
@@ -166,7 +167,7 @@ export function Header() {
                                         <li key={index}>
                                             <Link 
                                                 href={item.href} 
-                                                className="text-lg text-white hover:text-blue-300 transition-colors block py-2"
+                                                className="text-lg text-white hover:text-blue-300 transition-colors block py-2 no-underline"
                                                 onClick={() => setMobileMenuOpen(false)}
                                             >
                                                 {item.linkText}
@@ -177,16 +178,15 @@ export function Header() {
                             )}
                             
                             <div className="mt-auto pt-6 border-t border-gray-800">
-                                <Link
-                                    href="https://github.com/netlify-templates/next-platform-starter"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center space-x-2 text-white/80 hover:text-white transition-colors"
-                                    onClick={() => setMobileMenuOpen(false)}
-                                >
-                                    <Image src={githubLogo} alt="GitHub logo" className="w-5 h-5" />
-                                    <span>GitHub</span>
-                                </Link>
+                                <div className="flex flex-col gap-4">
+                                    <Link
+                                        href="/login"
+                                        className="flex justify-center items-center py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors no-underline"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        Login
+                                    </Link>
+                                </div>
                             </div>
                         </div>
                     </div>

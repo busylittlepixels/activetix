@@ -26,34 +26,42 @@ export function Footer() {
             );
         }
 
-        // Animate links on hover
-        linkRefs.current.forEach(link => {
+        // Store the current refs value
+        const currentLinkRefs = linkRefs.current;
+
+        // Create named functions for the event listeners
+        const handleMouseEnter = (link: HTMLElement) => {
+            gsap.to(link, {
+                y: -2,
+                scale: 1.05,
+                duration: 0.2,
+                ease: 'power1.out'
+            });
+        };
+        
+        const handleMouseLeave = (link: HTMLElement) => {
+            gsap.to(link, {
+                y: 0,
+                scale: 1,
+                duration: 0.2,
+                ease: 'power1.out'
+            });
+        };
+
+        // Add event listeners
+        currentLinkRefs.forEach(link => {
             if (link) {
-                link.addEventListener('mouseenter', () => {
-                    gsap.to(link, {
-                        y: -2,
-                        scale: 1.05,
-                        duration: 0.2,
-                        ease: 'power1.out'
-                    });
-                });
-                
-                link.addEventListener('mouseleave', () => {
-                    gsap.to(link, {
-                        y: 0,
-                        scale: 1,
-                        duration: 0.2,
-                        ease: 'power1.out'
-                    });
-                });
+                link.addEventListener('mouseenter', () => handleMouseEnter(link));
+                link.addEventListener('mouseleave', () => handleMouseLeave(link));
             }
         });
 
+        // Clean up function
         return () => {
-            linkRefs.current.forEach(link => {
+            currentLinkRefs.forEach(link => {
                 if (link) {
-                    link.removeEventListener('mouseenter', () => {});
-                    link.removeEventListener('mouseleave', () => {});
+                    link.removeEventListener('mouseenter', () => handleMouseEnter(link));
+                    link.removeEventListener('mouseleave', () => handleMouseLeave(link));
                 }
             });
         };

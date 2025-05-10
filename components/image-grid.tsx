@@ -55,10 +55,10 @@ export function ImageGrid({ images, className = '' }: ImageGridProps) {
           >
             {image.link ? (
               <Link href={image.link} className="block w-full h-full">
-                <ImageWithHoverEffect image={image} />
+                <ImageWithHoverEffect image={image} index={index} />
               </Link>
             ) : (
-              <ImageWithHoverEffect image={image} />
+              <ImageWithHoverEffect image={image} index={index} />
             )}
           </div>
         ))}
@@ -67,13 +67,16 @@ export function ImageGrid({ images, className = '' }: ImageGridProps) {
   );
 }
 
-function ImageWithHoverEffect({ image }: { image: ImageItem }) {
+function ImageWithHoverEffect({ image, index }: { image: ImageItem; index?: number }) {
   return (
     <>
       <Image 
         src={image.src} 
         alt={image.alt}
         fill
+        priority={index !== undefined && index < 4}
+        loading={index !== undefined && index < 8 ? "eager" : "lazy"}
+        sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
         style={{ objectFit: 'cover' }}
         className="transition-transform duration-500 group-hover:scale-110"
       />

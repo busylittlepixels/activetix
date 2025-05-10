@@ -91,7 +91,7 @@ export function Hero({
   return (
     <div 
       ref={heroRef} 
-      className="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden"
+      className="relative w-full min-h-[90vh] flex items-center overflow-hidden pt-16"
     >
       {/* Background media */}
       <div className="absolute inset-0 w-full h-full z-0">
@@ -103,6 +103,7 @@ export function Hero({
             priority
             className="object-cover"
             onLoad={() => setIsLoaded(true)}
+            unoptimized={backgroundSrc.startsWith('http')}
           />
         ) : (
           <video
@@ -117,19 +118,19 @@ export function Hero({
             Your browser does not support the video tag.
           </video>
         )}
-        {/* Overlay gradient for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-1"></div>
+        {/* Enhanced overlay gradient that creates a seamless transition to the black background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black z-1"></div>
       </div>
 
-      {/* Hero content */}
+      {/* Hero content - aligned left with reduced font sizes */}
       <div 
         ref={contentRef} 
-        className="relative z-10 px-6 py-12 max-w-7xl mx-auto text-center"
+        className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
       >
         {badge && (
           <div 
             ref={badgeRef} 
-            className="inline-block mb-6 px-4 py-2 bg-blue-600 rounded-full text-sm font-semibold tracking-wide"
+            className="inline-block mb-5 px-3 py-1.5 bg-blue-600 rounded-full text-xs font-semibold tracking-wide"
           >
             {badge}
           </div>
@@ -137,36 +138,28 @@ export function Hero({
         
         <h1 
           ref={titleRef}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-50"
+          className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-50 max-w-4xl"
         >
           {title}
         </h1>
         
         <p 
           ref={subtitleRef}
-          className="text-xl md:text-2xl mb-10 max-w-3xl mx-auto text-blue-100"
+          className="text-lg md:text-xl mb-8 max-w-2xl text-blue-100"
         >
           {subtitle}
         </p>
         
-        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-start">
           {primaryCta && (
             <Link
               href={primaryCta.href}
-              className="btn btn-lg bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-lg font-semibold transition-all transform hover:scale-105"
+              className="btn bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105"
             >
               {primaryCta.text}
             </Link>
           )}
           
-          {secondaryCta && (
-            <Link
-              href={secondaryCta.href}
-              className="btn btn-lg bg-transparent hover:bg-white/10 text-white border-2 border-white px-8 py-4 rounded-lg font-semibold transition-all"
-            >
-              {secondaryCta.text}
-            </Link>
-          )}
         </div>
       </div>
     </div>

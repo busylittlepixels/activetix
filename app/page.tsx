@@ -11,6 +11,8 @@ import { Footer } from 'components/footer';
 import { getNetlifyContext } from 'utils';
 import { TwoColumnCTA } from 'components/two-column-cta';
 import { ImageGrid } from 'components/image-grid';
+import { FeaturedRaces } from 'components/featured-races';
+import { EventMap } from 'components/event-map';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -37,20 +39,80 @@ And as always with dynamic content, beware of layout shifts & flicker! (here, we
 
 const ctx = getNetlifyContext();
 
-// Sample image data for the image grid
+// Sample image data for the image grid with running/marathon images
 const gridImages = [
-  { src: '/images/corgi.jpg', alt: 'Event 1', hoverText: 'Summer Concert', link: '/events/summer-concert' },
-  { src: '/images/corgi.jpg', alt: 'Event 2', hoverText: 'Theatre Night', link: '/events/theatre-night' },
-  { src: '/images/corgi.jpg', alt: 'Event 3', hoverText: 'Art Exhibition', link: '/events/art-exhibition' },
-  { src: '/images/corgi.jpg', alt: 'Event 4', hoverText: 'Dance Festival', link: '/events/dance-festival' },
-  { src: '/images/corgi.jpg', alt: 'Event 5', hoverText: 'Comedy Show', link: '/events/comedy-show' },
-  { src: '/images/corgi.jpg', alt: 'Event 6', hoverText: 'Film Premiere', link: '/events/film-premiere' },
-  { src: '/images/corgi.jpg', alt: 'Event 7', hoverText: 'Music Festival', link: '/events/music-festival' },
-  { src: '/images/corgi.jpg', alt: 'Event 8', hoverText: 'Sports Game', link: '/events/sports-game' },
-  { src: '/images/corgi.jpg', alt: 'Event 9', hoverText: 'Food Fair', link: '/events/food-fair' },
-  { src: '/images/corgi.jpg', alt: 'Event 10', hoverText: 'Tech Conference', link: '/events/tech-conference' },
-  { src: '/images/corgi.jpg', alt: 'Event 11', hoverText: 'Business Summit', link: '/events/business-summit' },
-  { src: '/images/corgi.jpg', alt: 'Event 12', hoverText: 'Charity Gala', link: '/events/charity-gala' },
+  { 
+    src: 'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?q=80&w=800&auto=format&fit=crop', 
+    alt: 'Marathon runners crossing finish line', 
+    hoverText: 'NYC Marathon', 
+    link: '/events/nyc-marathon' 
+  },
+  { 
+    src: 'https://images.unsplash.com/photo-1596727362302-b8d891c22e52?q=80&w=800&auto=format&fit=crop', 
+    alt: 'Runners on mountain trail', 
+    hoverText: 'Trail Running Series', 
+    link: '/events/trail-series' 
+  },
+  { 
+    src: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?q=80&w=800&auto=format&fit=crop', 
+    alt: 'Runner silhouette at sunset', 
+    hoverText: 'Sunset Half Marathon', 
+    link: '/events/sunset-half' 
+  },
+  { 
+    src: 'https://images.unsplash.com/photo-1594882645126-14020914d58d?q=80&w=800&auto=format&fit=crop', 
+    alt: 'Group of runners at starting line', 
+    hoverText: 'Spring 10K Challenge', 
+    link: '/events/spring-10k' 
+  },
+  { 
+    src: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=800&auto=format&fit=crop', 
+    alt: 'Trail runner jumping over rocks', 
+    hoverText: 'Mountain Ultra Marathon', 
+    link: '/events/mountain-ultra' 
+  },
+  { 
+    src: 'https://images.unsplash.com/photo-1541252260730-0412e8e2108e?q=80&w=800&auto=format&fit=crop', 
+    alt: 'Cross country runner in autumn forest', 
+    hoverText: 'Fall Cross Country', 
+    link: '/events/fall-xc' 
+  },
+  { 
+    src: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=800&auto=format&fit=crop', 
+    alt: 'Runner with race number', 
+    hoverText: 'Boston Marathon', 
+    link: '/events/boston-marathon' 
+  },
+  { 
+    src: 'https://images.unsplash.com/photo-1486218119243-13883505764c?q=80&w=800&auto=format&fit=crop', 
+    alt: 'Marathon participants on city street', 
+    hoverText: 'Urban Marathon', 
+    link: '/events/urban-marathon' 
+  },
+  { 
+    src: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=800&auto=format&fit=crop', 
+    alt: 'Athletes at starting line of track race', 
+    hoverText: 'Track & Field Championship', 
+    link: '/events/track-field' 
+  },
+  { 
+    src: 'https://images.unsplash.com/photo-1517344884509-a0c97ec11bcc?q=80&w=800&auto=format&fit=crop', 
+    alt: 'Runners in colorful mud race', 
+    hoverText: 'Color Run Challenge', 
+    link: '/events/color-run' 
+  },
+  { 
+    src: 'https://images.unsplash.com/photo-1530143584546-02191bc84eb5?q=80&w=800&auto=format&fit=crop', 
+    alt: 'Obstacle course race participants', 
+    hoverText: 'Obstacle Race', 
+    link: '/events/obstacle-race' 
+  },
+  { 
+    src: 'https://images.unsplash.com/photo-1585341840941-98553e474d84?q=80&w=800&auto=format&fit=crop', 
+    alt: 'Triathlon participants running segment', 
+    hoverText: 'Ironman Triathlon', 
+    link: '/events/ironman' 
+  },
 ];
 
 export default function Page() {
@@ -96,26 +158,27 @@ export default function Page() {
     <div className="flex flex-col w-full">
       {/* Full-width hero section */}
       <Hero
-        badge="NEXT.JS + ACTIVETIX"
-        title="Build Modern Web Experiences"
-        subtitle="Deploy powerful full-stack applications with advanced features like Edge Functions, Serverless Functions, and more."
+        badge="RUNNING EVENTS PLATFORM"
+        title="Your Next Race Awaits"
+        subtitle="Discover and register for the world's best marathons, trail runs, and running events. Join thousands of passionate runners worldwide."
         primaryCta={{
-          text: "Get Started",
-          href: "/documentation"
+          text: "Find Events",
+          href: "/events"
         }}
         secondaryCta={{
-          text: "View Examples",
-          href: "/examples"
+          text: "How It Works",
+          href: "/how-it-works"
         }}
         backgroundType="image"
-        backgroundSrc="/images/corgi.jpg"
+        backgroundSrc="/images/hero/marathon-runners.jpg"
       />
       
       {/* Two-column CTA section */}
       <TwoColumnCTA 
         title="Discover Amazing Events"
         subtitle="EXCLUSIVE EXPERIENCES"
-        description="ActiveTix helps you discover and book tickets for the most exclusive events. From concerts to sports games, theater performances to art exhibitions, we've got you covered."
+        description="ActiveTix helps you discover and book tickets for the most exclusive events. From marathons to trail runs, obstacle courses to triathlons, we've got you covered."
+        secondaryDescription="Our platform connects race organizers with passionate runners worldwide. Whether you're a first-time 5K participant or an elite marathon runner, we provide seamless registration, real-time tracking, and exclusive race-day perks for an unmatched experience."
         primaryCta={{
           text: "Browse Events",
           href: "/events"
@@ -124,13 +187,14 @@ export default function Page() {
           text: "How It Works",
           href: "/how-it-works"
         }}
-        imageSrc="/images/corgi.jpg"
-        imageAlt="Concert audience with lights"
+        imageSrc="https://images.unsplash.com/photo-1517931524326-bdd55a541177?q=80&w=1200&auto=format&fit=crop"
+        imageAlt="Marathon runners with crowd cheering"
+        className="pt-8 md:pt-12 pb-32"
       />
       
       {/* Context section with full-width background and constrained content */}
       {!!ctx && (
-        <section className="w-full py-16 bg-black">
+        <section className="w-full pb-16 bg-black">
           <PageContainer>
             <div className="animate-on-scroll">
               <ContextAlert className="mb-6" />
@@ -141,40 +205,19 @@ export default function Page() {
         </section>
       )}
       
-      {/* Random quote section with full-width background and constrained content */}
-      <section className="w-full py-16 bg-gray-900">
-        <PageContainer>
-          <div className="animate-on-scroll">
-            <Markdown content={preDynamicContentExplainer} className="" />
-            <div className="animated-card">
-              <RandomQuote />
-            </div>
-            <Markdown content={postDynamicContentExplainer} className="" />
-          </div>
-        </PageContainer>
-      </section>
-
-      {/* Features section with full-width background and constrained content */}
-      <section className="w-full py-16 bg-black">
-        <PageContainer>
-          <div className="animate-on-scroll feature-grid grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="feature-card animated-card bg-gradient-to-br from-blue-600 to-purple-600 p-6 rounded-xl shadow-lg">
-              <h3 className="text-xl font-bold mb-3">Fast Development</h3>
-              <p>Build and preview your Next.js app locally, with hot reloading for instant feedback.</p>
-            </div>
-            <div className="feature-card animated-card bg-gradient-to-br from-cyan-600 to-teal-600 p-6 rounded-xl shadow-lg">
-              <h3 className="text-xl font-bold mb-3">Instant Deployment</h3>
-              <p>Push to Git and let ActiveTix automatically build and deploy your site globally.</p>
-            </div>
-          </div>
-        </PageContainer>
-      </section>
       
+
+      {/* Featured Races section */}
+      <FeaturedRaces />
+
       {/* Full-width image grid */}
-      <section className="w-full">
-        <h2 className="text-center text-3xl font-bold my-12">Explore Our Events</h2>
+      <section className="w-full mt-32 pb-24">
         <ImageGrid images={gridImages} />
       </section>
+
+      {/* World Map Event Locations */}
+      <EventMap />
+
     </div>
   );
 }

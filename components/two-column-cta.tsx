@@ -9,6 +9,7 @@ interface TwoColumnCTAProps {
   title: string;
   subtitle?: string;
   description: string;
+  secondaryDescription?: string;
   primaryCta: {
     text: string;
     href: string;
@@ -27,6 +28,7 @@ export function TwoColumnCTA({
   title,
   subtitle,
   description,
+  secondaryDescription,
   primaryCta,
   secondaryCta,
   imageSrc,
@@ -87,9 +89,14 @@ export function TwoColumnCTA({
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
               {title}
             </h2>
-            <p className="text-lg md:text-xl mb-8 text-gray-300">
+            <p className="text-lg md:text-xl mb-5 text-gray-300">
               {description}
             </p>
+            {secondaryDescription && (
+              <p className="text-lg md:text-xl mb-8 text-gray-300">
+                {secondaryDescription}
+              </p>
+            )}
             <div className="flex flex-wrap gap-4">
               <Link
                 href={primaryCta.href}
@@ -116,6 +123,8 @@ export function TwoColumnCTA({
                 src={imageSrc}
                 alt={imageAlt}
                 fill
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
                 style={{ objectFit: 'cover' }}
                 className="rounded-lg"
               />

@@ -35,7 +35,7 @@
     }
 
     a:not(.btn) {
-        @apply underline transition hover:opacity-80;
+        @apply transition hover:opacity-80 no-underline;
     }
 
     :not(pre) > code {
@@ -45,6 +45,18 @@
 }
 
 @layer components {
+    /* Header styling */
+    header {
+        transition: background-color 0.3s ease,
+                    backdrop-filter 0.3s ease,
+                    box-shadow 0.3s ease,
+                    padding 0.3s ease;
+    }
+    
+    header.scrolled {
+        @apply bg-black/95 backdrop-blur-sm shadow-lg;
+    }
+
     /* Code block styling */
     .code-block-wrapper {
         @apply overflow-hidden bg-neutral-900 rounded-md text-neutral-100 mb-4;
