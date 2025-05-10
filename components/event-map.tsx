@@ -25,7 +25,7 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 40.7128, lng: -74.0060 },
     eventName: 'NYC Marathon',
     eventDate: 'November 5, 2025',
-    id: 'nyc-marathon-2023'
+    id: 'nyc-marathon-2025'
   },
   {
     city: 'London',
@@ -33,7 +33,7 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 51.5074, lng: -0.1278 },
     eventName: 'London Half Marathon',
     eventDate: 'March 3, 2025',
-    id: 'london-half-2023'
+    id: 'london-half-2025'
   },
   {
     city: 'Tokyo',
@@ -41,7 +41,7 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 35.6762, lng: 139.6503 },
     eventName: 'Tokyo 10K Run',
     eventDate: 'May 21, 2025',
-    id: 'tokyo-10k-2023'
+    id: 'tokyo-10k-2025'
   },
   {
     city: 'Berlin',
@@ -49,7 +49,7 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 52.5200, lng: 13.4050 },
     eventName: 'Berlin Marathon',
     eventDate: 'September 24, 2025',
-    id: 'berlin-marathon-2023'
+    id: 'berlin-marathon-2025'
   },
   {
     city: 'Sydney',
@@ -57,7 +57,7 @@ const eventLocations: EventLocation[] = [
     coords: { lat: -33.8688, lng: 151.2093 },
     eventName: 'Sydney Harbour 5K',
     eventDate: 'February 12, 2025',
-    id: 'sydney-5k-2023'
+    id: 'sydney-5k-2025'
   },
   {
     city: 'Paris',
@@ -65,7 +65,7 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 48.8566, lng: 2.3522 },
     eventName: 'Paris City Half Marathon',
     eventDate: 'October 8, 2025',
-    id: 'paris-half-2023'
+    id: 'paris-half-2025'
   },
   {
     city: 'Cape Town',
@@ -73,7 +73,7 @@ const eventLocations: EventLocation[] = [
     coords: { lat: -33.9249, lng: 18.4241 },
     eventName: 'Cape Town Ultra',
     eventDate: 'April 15, 2025',
-    id: 'cape-town-ultra-2023'
+    id: 'cape-town-ultra-2025'
   },
   {
     city: 'Rio de Janeiro',
@@ -81,7 +81,7 @@ const eventLocations: EventLocation[] = [
     coords: { lat: -22.9068, lng: -43.1729 },
     eventName: 'Rio Beach Run',
     eventDate: 'June 18, 2025',
-    id: 'rio-beach-run-2023'
+    id: 'rio-beach-run-2025'
   },
   {
     city: 'Singapore',
@@ -89,7 +89,7 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 1.3521, lng: 103.8198 },
     eventName: 'Singapore Night Marathon',
     eventDate: 'July 22, 2025',
-    id: 'singapore-night-marathon-2023'
+    id: 'singapore-night-marathon-2025'
   },
   {
     city: 'Chicago',
@@ -97,7 +97,7 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 41.8781, lng: -87.6298 },
     eventName: 'Chicago Marathon',
     eventDate: 'October 15, 2025',
-    id: 'chicago-marathon-2023'
+    id: 'chicago-marathon-2025'
   },
   // New locations
   {
@@ -106,7 +106,7 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 53.3498, lng: -6.2603 },
     eventName: 'Dublin Marathon',
     eventDate: 'October 29, 2025',
-    id: 'dublin-marathon-2023'
+    id: 'dublin-marathon-2025'
   },
   {
     city: 'Amsterdam',
@@ -114,7 +114,7 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 52.3676, lng: 4.9041 },
     eventName: 'Amsterdam City Run',
     eventDate: 'April 21, 2025',
-    id: 'amsterdam-run-2023'
+    id: 'amsterdam-run-2025'
   },
   {
     city: 'Barcelona',
@@ -122,7 +122,7 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 41.3851, lng: 2.1734 },
     eventName: 'Barcelona Half Marathon',
     eventDate: 'May 7, 2025',
-    id: 'barcelona-half-2023'
+    id: 'barcelona-half-2025'
   },
   {
     city: 'Lisbon',
@@ -130,7 +130,7 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 38.7223, lng: -9.1393 },
     eventName: 'Lisbon Waterfront 10K',
     eventDate: 'June 11, 2025',
-    id: 'lisbon-10k-2023'
+    id: 'lisbon-10k-2025'
   },
   {
     city: 'Split',
@@ -138,7 +138,7 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 43.5081, lng: 16.4402 },
     eventName: 'Split Coastal Marathon',
     eventDate: 'July 9, 2025',
-    id: 'split-marathon-2023'
+    id: 'split-marathon-2025'
   }
 ];
 

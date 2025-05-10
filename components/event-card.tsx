@@ -69,6 +69,8 @@ export function EventCard({
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover"
+            priority={featured}
+            loading={featured ? "eager" : "lazy"}
           />
           {featured && (
             <div className="absolute top-3 right-3 bg-blue-600 text-white px-2 py-1 text-xs font-semibold rounded">

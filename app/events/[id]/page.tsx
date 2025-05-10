@@ -56,7 +56,7 @@ export default function EventPage({ params }: EventDetailsProps) {
       'Professional Photography',
       'Live Tracking App'
     ],
-    registrationDeadline: 'September 15, 2023',
+    registrationDeadline: 'September 15, 2025',
     contactEmail: 'info@activetix.com',
     contactPhone: '+1 (555) 123-4567'
   };
