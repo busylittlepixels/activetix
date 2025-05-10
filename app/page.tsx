@@ -9,6 +9,8 @@ import { PageContainer } from 'components/page-container';
 import { RandomQuote } from 'components/random-quote';
 import { Footer } from 'components/footer';
 import { getNetlifyContext } from 'utils';
+import { TwoColumnCTA } from 'components/two-column-cta';
+import { ImageGrid } from 'components/image-grid';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -34,6 +36,22 @@ And as always with dynamic content, beware of layout shifts & flicker! (here, we
 `;
 
 const ctx = getNetlifyContext();
+
+// Sample image data for the image grid
+const gridImages = [
+  { src: '/images/corgi.jpg', alt: 'Event 1', hoverText: 'Summer Concert', link: '/events/summer-concert' },
+  { src: '/images/corgi.jpg', alt: 'Event 2', hoverText: 'Theatre Night', link: '/events/theatre-night' },
+  { src: '/images/corgi.jpg', alt: 'Event 3', hoverText: 'Art Exhibition', link: '/events/art-exhibition' },
+  { src: '/images/corgi.jpg', alt: 'Event 4', hoverText: 'Dance Festival', link: '/events/dance-festival' },
+  { src: '/images/corgi.jpg', alt: 'Event 5', hoverText: 'Comedy Show', link: '/events/comedy-show' },
+  { src: '/images/corgi.jpg', alt: 'Event 6', hoverText: 'Film Premiere', link: '/events/film-premiere' },
+  { src: '/images/corgi.jpg', alt: 'Event 7', hoverText: 'Music Festival', link: '/events/music-festival' },
+  { src: '/images/corgi.jpg', alt: 'Event 8', hoverText: 'Sports Game', link: '/events/sports-game' },
+  { src: '/images/corgi.jpg', alt: 'Event 9', hoverText: 'Food Fair', link: '/events/food-fair' },
+  { src: '/images/corgi.jpg', alt: 'Event 10', hoverText: 'Tech Conference', link: '/events/tech-conference' },
+  { src: '/images/corgi.jpg', alt: 'Event 11', hoverText: 'Business Summit', link: '/events/business-summit' },
+  { src: '/images/corgi.jpg', alt: 'Event 12', hoverText: 'Charity Gala', link: '/events/charity-gala' },
+];
 
 export default function Page() {
   const [sectionsLoaded, setSectionsLoaded] = useState(false);
@@ -93,6 +111,23 @@ export default function Page() {
         backgroundSrc="/images/corgi.jpg"
       />
       
+      {/* Two-column CTA section */}
+      <TwoColumnCTA 
+        title="Discover Amazing Events"
+        subtitle="EXCLUSIVE EXPERIENCES"
+        description="ActiveTix helps you discover and book tickets for the most exclusive events. From concerts to sports games, theater performances to art exhibitions, we've got you covered."
+        primaryCta={{
+          text: "Browse Events",
+          href: "/events"
+        }}
+        secondaryCta={{
+          text: "How It Works",
+          href: "/how-it-works"
+        }}
+        imageSrc="/images/corgi.jpg"
+        imageAlt="Concert audience with lights"
+      />
+      
       {/* Context section with full-width background and constrained content */}
       {!!ctx && (
         <section className="w-full py-16 bg-black">
@@ -133,6 +168,12 @@ export default function Page() {
             </div>
           </div>
         </PageContainer>
+      </section>
+      
+      {/* Full-width image grid */}
+      <section className="w-full">
+        <h2 className="text-center text-3xl font-bold my-12">Explore Our Events</h2>
+        <ImageGrid images={gridImages} />
       </section>
     </div>
   );
