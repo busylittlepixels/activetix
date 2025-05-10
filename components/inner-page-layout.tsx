@@ -101,7 +101,7 @@ export function InnerPageLayout({
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-black z-10"></div>
           </div>
           <div className="relative h-full flex flex-col justify-end pb-20 z-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 w-full">
               {isEventPage ? (
                 <div className="text-left w-full">
                   <div className="lg:max-w-2/3">
