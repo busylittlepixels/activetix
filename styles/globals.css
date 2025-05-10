@@ -16,6 +16,45 @@
         'Noto Color Emoji';
 }
 
+/* View Transitions API styles */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+}
+
+::view-transition-old(root) {
+  animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+}
+
+::view-transition-new(root) {
+  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  animation-fill-mode: both;
+  animation-delay: 0.1s;
+}
+
+/* Hero section transition */
+.hero-section {
+  view-transition-name: hero;
+}
+
+/* Event card transitions */
+.event-card {
+  view-transition-name: event-card;
+}
+
+/* Named transitions for important UI elements */
+.page-title {
+  view-transition-name: page-title;
+}
+
+.main-navigation {
+  view-transition-name: main-navigation;
+}
+
+.site-footer {
+  view-transition-name: site-footer;
+}
+
 @layer base {
     /* Prevent scrolling when mobile menu is open */
     html.menu-open {

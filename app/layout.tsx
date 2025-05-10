@@ -1,11 +1,18 @@
 import '../styles/globals.css';
 import { Footer } from '../components/footer';
 import { Header } from '../components/header';
+import { ViewTransitions } from '../components/view-transitions';
 
 export const metadata = {
     title: {
         template: '%s | ActiveTix',
         default: 'ActiveTix - Modern Web Experiences'
+    },
+    metadataBase: new URL('https://activetix.run'),
+    viewport: {
+        width: 'device-width',
+        initialScale: 1,
+        maximumScale: 1
     }
 };
 
@@ -26,6 +33,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                         {children}
                     </main>
                     <Footer />
+                    <ViewTransitions />
                 </div>
             </body>
         </html>

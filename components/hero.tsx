@@ -86,7 +86,7 @@ export function Hero({
   return (
     <div 
       ref={heroRef} 
-      className="relative w-full min-h-[90vh] flex items-center overflow-hidden pt-16"
+      className="relative w-full min-h-[90vh] flex items-center overflow-hidden pt-16 hero-section"
     >
       {/* Background media */}
       <div className="absolute inset-0 w-full h-full z-0">

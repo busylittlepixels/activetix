@@ -76,7 +76,7 @@ export function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer ref={footerRef} className="w-full bg-black pt-16 pb-12 sm:pt-24 sm:pb-16">
+        <footer className="border-t border-gray-800 bg-black/70 pt-16 pb-8 backdrop-blur-sm site-footer">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row justify-between items-start gap-8">
                     <div className="space-y-4 max-w-xs">

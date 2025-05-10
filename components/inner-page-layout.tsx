@@ -105,7 +105,7 @@ export function InnerPageLayout({
               {isEventPage ? (
                 <div className="text-left w-full">
                   <div className="lg:max-w-2/3">
-                    <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-50">{title}</h1>
+                    <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-50 page-title">{title}</h1>
                     {subtitle && <p className="text-blue-100 text-lg md:text-xl mt-3">{subtitle}</p>}
                   </div>
                   <div className="flex gap-2 mt-4">
@@ -118,7 +118,7 @@ export function InnerPageLayout({
               ) : (
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                   <div className="text-left">
-                    <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-50">{title}</h1>
+                    <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-50 page-title">{title}</h1>
                     {subtitle && <p className="text-blue-100 text-lg md:text-xl mt-3 max-w-2xl">{subtitle}</p>}
                   </div>
                 </div>
@@ -134,7 +134,7 @@ export function InnerPageLayout({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {isEventPage ? (
               <div className="text-left">
-                <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-50">{title}</h1>
+                <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-50 page-title">{title}</h1>
                 {subtitle && <p className="text-blue-100 text-lg md:text-xl mt-3">{subtitle}</p>}
                 <div className="flex gap-2 mt-4">
                   <ShareButton platform="facebook" url={currentUrl} title={title} />
@@ -146,7 +146,7 @@ export function InnerPageLayout({
             ) : (
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div className="text-left">
-                  <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-50">{title}</h1>
+                  <h1 className="text-white text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-50 page-title">{title}</h1>
                   {subtitle && <p className="text-blue-100 text-lg md:text-xl mt-3 max-w-2xl">{subtitle}</p>}
                 </div>
               </div>

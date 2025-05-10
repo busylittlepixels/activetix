@@ -104,7 +104,7 @@ export function Header() {
                     </button>
                     
                     {/* Desktop menu */}
-                    <div className="hidden lg:flex lg:items-center">
+                    <div className="hidden lg:flex lg:items-center main-navigation">
                         {!!navItems?.length && (
                             <ul className="flex flex-wrap gap-x-4 gap-y-1 me-4">
                                 {navItems.map((item, index) => (
