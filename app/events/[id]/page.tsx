@@ -86,7 +86,7 @@ export default function EventDetailsPage() {
             </p>
             
             <p className="text-gray-300 mb-4">
-              Whether you're an elite athlete aiming for a personal best or a recreational runner looking to challenge yourself, this event provides a memorable experience for all participants.
+              Whether you&apos;re an elite athlete aiming for a personal best or a recreational runner looking to challenge yourself, this event provides a memorable experience for all participants.
             </p>
             
             <h3 className="text-xl font-semibold mb-3 text-white mt-8">Course Information</h3>
@@ -106,7 +106,7 @@ export default function EventDetailsPage() {
             <h3 className="text-xl font-semibold mb-3 text-white mt-8">Included in Registration</h3>
             <ul className="text-gray-300 list-disc pl-5 space-y-2">
               <li>Official race t-shirt</li>
-              <li>Finisher's medal</li>
+              <li>Finisher&apos;s medal</li>
               <li>Chip timing</li>
               <li>Race photos</li>
               <li>Refreshments along the course</li>

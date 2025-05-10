@@ -71,7 +71,7 @@ export default function RegistrationSuccessPage() {
           </div>
           
           <p className="text-gray-300 mb-8">
-            We've sent a confirmation email with all the details.
+            We&apos;ve sent a confirmation email with all the details.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -91,7 +91,7 @@ export default function RegistrationSuccessPage() {
         </div>
         
         <div className="bg-black/50 border border-gray-800 rounded-xl p-6 md:p-8 shadow-xl">
-          <h3 className="text-xl font-semibold text-white mb-4">What's Next?</h3>
+          <h3 className="text-xl font-semibold text-white mb-4">What&apos;s Next?</h3>
           
           <ul className="space-y-4">
             <li className="flex gap-3">
@@ -100,7 +100,7 @@ export default function RegistrationSuccessPage() {
               </div>
               <div>
                 <h4 className="text-white font-medium">Check Your Email</h4>
-                <p className="text-gray-300 text-sm">We've sent a confirmation email with all the details and your registration receipt.</p>
+                <p className="text-gray-300 text-sm">We&apos;ve sent a confirmation email with all the details and your registration receipt.</p>
               </div>
             </li>
             
