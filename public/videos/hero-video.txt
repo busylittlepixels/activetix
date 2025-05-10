@@ -1,0 +1,10 @@
+This is a placeholder for the hero background video file.
+In a real implementation, you would place an actual MP4 video file here.
+
+Recommended video specs:
+- Resolution: 1920x1080 (Full HD)
+- Format: MP4 with H.264 encoding
+- Duration: 10-30 seconds (for a looping background)
+- Content: Subtle motion graphics related to development, deployment, or tech
+
+Keep the file size optimized (ideally under 5MB) for fast loading. 

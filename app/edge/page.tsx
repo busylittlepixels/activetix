@@ -1,4 +1,5 @@
 import { Markdown } from 'components/markdown';
+import { PageContainer } from 'components/page-container';
 
 export const metadata = {
     title: 'Fallback'
@@ -17,9 +18,9 @@ There are advatanges to using Edge Functions directly, such as the ability to ac
 
 export default function FallbackPage() {
     return (
-        <>
+        <PageContainer className="py-8 md:py-12">
             <h1 className="mb-8">You&apos;ve reached the fallback page.</h1>
             <Markdown content={explainer} />
-        </>
+        </PageContainer>
     );
 }

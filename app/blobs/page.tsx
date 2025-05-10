@@ -3,6 +3,7 @@
 import { ShapeEditor } from './editor';
 import { ContextAlert } from 'components/context-alert';
 import { Markdown } from 'components/markdown';
+import { PageContainer } from 'components/page-container';
 import { getNetlifyContext, uploadDisabled } from 'utils';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
@@ -69,7 +70,7 @@ export default function Page() {
     }, []);
 
     return (
-        <>
+        <PageContainer className="py-8 md:py-12">
             <ContextAlert
                 warningMessage={uploadDisabled ? uploadDisabledText : null}
                 className="mb-6"
@@ -85,6 +86,6 @@ export default function Page() {
                     </div>
                 </>
             )}
-        </>
+        </PageContainer>
     );
 }
