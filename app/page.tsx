@@ -158,7 +158,7 @@ export default function Page() {
     <div className="flex flex-col w-full">
       {/* Full-width hero section */}
       <Hero
-        badge="Events PLATFORM"
+        badge="Get Set"
         title="Your Next Race Awaits"
         subtitle="Discover and register for the world's best marathons, trail runs, and Events. Join thousands of passionate runners worldwide."
         primaryCta={{
