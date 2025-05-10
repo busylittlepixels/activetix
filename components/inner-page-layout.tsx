@@ -93,7 +93,7 @@ export function InnerPageLayout({
     <div className="flex flex-col min-h-screen">
       {/* Header Image Banner */}
       {headerImage && (
-        <div className="relative w-full h-72 md:h-96 overflow-hidden">
+        <div className="relative w-full h-72 md:h-96 overflow-hidden mb-8">
           <div 
             className="absolute inset-0 bg-cover bg-center" 
             style={{ backgroundImage: `url(${headerImage})` }}
@@ -130,7 +130,7 @@ export function InnerPageLayout({
 
       {/* Title without Image */}
       {!headerImage && (
-        <div className="w-full bg-background pt-32 pb-12">
+        <div className="w-full bg-background pt-32 pb-12 mb-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             {isEventPage ? (
               <div className="text-left">
@@ -156,7 +156,7 @@ export function InnerPageLayout({
       )}
 
       {/* Main Content */}
-      <main className="flex-grow w-full py-12 bg-background">
+      <main className="flex-grow w-full py-4 bg-background">
         {fullWidth ? (
           children
         ) : (

@@ -249,7 +249,7 @@ export function FeaturedRaces() {
             ref={titleRef}
             className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-white"
           >
-            Featured Running Events
+            Featured Events
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl text-left">
             Discover and register for the world&apos;s best marathons, trail runs, and races

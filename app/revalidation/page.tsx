@@ -45,7 +45,7 @@ export default async function Page() {
     }
 
     return (
-        <PageContainer className="py-8 md:py-12">
+        <PageContainer className="py-8 md:py-12" noHeaderSpacing={false}>
             <h1 className="mb-8">Revalidation Basics</h1>
             <Markdown content={explainer} className="mb-6" />
             <form className="mb-8" action={revalidateWiki}>

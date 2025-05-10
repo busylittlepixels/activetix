@@ -70,7 +70,7 @@ export default function Page() {
     }, []);
 
     return (
-        <PageContainer className="py-8 md:py-12">
+        <PageContainer className="py-8 md:py-12" noHeaderSpacing={false}>
             <ContextAlert
                 warningMessage={uploadDisabled ? uploadDisabledText : null}
                 className="mb-6"

@@ -301,10 +301,10 @@ export function EventMap() {
       <PageContainer>
         <div className="mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-white">
-            Global Running Events Map
+            Global Events Map
           </h2>
           <p className="text-lg text-white mt-3 max-w-3xl">
-            Explore running events taking place around the world and find your next race destination
+            Explore Events taking place around the world and find your next race destination
           </p>
         </div>
       </PageContainer>

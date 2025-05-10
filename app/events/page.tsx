@@ -88,8 +88,8 @@ export default function EventsPage() {
   
   return (
     <InnerPageLayout
-      title="Running Events"
-      subtitle="Find and register for the best running events worldwide"
+      title="Events"
+      subtitle="Find and register for the best Events worldwide"
       headerImage="/images/hero/events-runners.jpg"
     >
       <div className="mb-10">

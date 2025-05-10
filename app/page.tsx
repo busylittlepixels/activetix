@@ -158,9 +158,9 @@ export default function Page() {
     <div className="flex flex-col w-full">
       {/* Full-width hero section */}
       <Hero
-        badge="RUNNING EVENTS PLATFORM"
+        badge="Events PLATFORM"
         title="Your Next Race Awaits"
-        subtitle="Discover and register for the world's best marathons, trail runs, and running events. Join thousands of passionate runners worldwide."
+        subtitle="Discover and register for the world's best marathons, trail runs, and Events. Join thousands of passionate runners worldwide."
         primaryCta={{
           text: "Find Events",
           href: "/events"
