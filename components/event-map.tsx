@@ -15,9 +15,14 @@ interface EventLocation {
   eventName: string;
   eventDate: string;
   id: string;
+  // Exact position on map (percentages)
+  mapPosition?: {
+    x: number;
+    y: number;
+  };
 }
 
-// Sample event locations with coordinates
+// Sample event locations with coordinates and exact map positions
 const eventLocations: EventLocation[] = [
   {
     city: 'New York',
@@ -25,7 +30,8 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 40.7128, lng: -74.0060 },
     eventName: 'NYC Marathon',
     eventDate: 'November 5, 2025',
-    id: 'nyc-marathon-2025'
+    id: 'nyc-marathon-2025',
+    mapPosition: { x: 25.2, y: 39.5 }
   },
   {
     city: 'London',
@@ -33,7 +39,8 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 51.5074, lng: -0.1278 },
     eventName: 'London Half Marathon',
     eventDate: 'March 3, 2025',
-    id: 'london-half-2025'
+    id: 'london-half-2025',
+    mapPosition: { x: 47.3, y: 24.5 }
   },
   {
     city: 'Tokyo',
@@ -41,7 +48,8 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 35.6762, lng: 139.6503 },
     eventName: 'Tokyo 10K Run',
     eventDate: 'May 21, 2025',
-    id: 'tokyo-10k-2025'
+    id: 'tokyo-10k-2025',
+    mapPosition: { x: 82.2, y: 41.2 }
   },
   {
     city: 'Berlin',
@@ -49,7 +57,8 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 52.5200, lng: 13.4050 },
     eventName: 'Berlin Marathon',
     eventDate: 'September 24, 2025',
-    id: 'berlin-marathon-2025'
+    id: 'berlin-marathon-2025',
+    mapPosition: { x: 50.8, y: 23.5 }
   },
   {
     city: 'Sydney',
@@ -57,7 +66,8 @@ const eventLocations: EventLocation[] = [
     coords: { lat: -33.8688, lng: 151.2093 },
     eventName: 'Sydney Harbour 5K',
     eventDate: 'February 12, 2025',
-    id: 'sydney-5k-2025'
+    id: 'sydney-5k-2025',
+    mapPosition: { x: 85.8, y: 67.5 }
   },
   {
     city: 'Paris',
@@ -65,7 +75,8 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 48.8566, lng: 2.3522 },
     eventName: 'Paris City Half Marathon',
     eventDate: 'October 8, 2025',
-    id: 'paris-half-2025'
+    id: 'paris-half-2025',
+    mapPosition: { x: 48.6, y: 25.8 }
   },
   {
     city: 'Cape Town',
@@ -73,7 +84,8 @@ const eventLocations: EventLocation[] = [
     coords: { lat: -33.9249, lng: 18.4241 },
     eventName: 'Cape Town Ultra',
     eventDate: 'April 15, 2025',
-    id: 'cape-town-ultra-2025'
+    id: 'cape-town-ultra-2025',
+    mapPosition: { x: 51.5, y: 67.2 }
   },
   {
     city: 'Rio de Janeiro',
@@ -81,7 +93,8 @@ const eventLocations: EventLocation[] = [
     coords: { lat: -22.9068, lng: -43.1729 },
     eventName: 'Rio Beach Run',
     eventDate: 'June 18, 2025',
-    id: 'rio-beach-run-2025'
+    id: 'rio-beach-run-2025',
+    mapPosition: { x: 33.5, y: 62.5 }
   },
   {
     city: 'Singapore',
@@ -89,7 +102,8 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 1.3521, lng: 103.8198 },
     eventName: 'Singapore Night Marathon',
     eventDate: 'July 22, 2025',
-    id: 'singapore-night-marathon-2025'
+    id: 'singapore-night-marathon-2025',
+    mapPosition: { x: 73.8, y: 53.7 }
   },
   {
     city: 'Chicago',
@@ -97,7 +111,8 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 41.8781, lng: -87.6298 },
     eventName: 'Chicago Marathon',
     eventDate: 'October 15, 2025',
-    id: 'chicago-marathon-2025'
+    id: 'chicago-marathon-2025',
+    mapPosition: { x: 22.9, y: 38.7 }
   },
   // New locations
   {
@@ -106,7 +121,8 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 53.3498, lng: -6.2603 },
     eventName: 'Dublin Marathon',
     eventDate: 'October 29, 2025',
-    id: 'dublin-marathon-2025'
+    id: 'dublin-marathon-2025',
+    mapPosition: { x: 45.5, y: 23.7 }
   },
   {
     city: 'Amsterdam',
@@ -114,7 +130,8 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 52.3676, lng: 4.9041 },
     eventName: 'Amsterdam City Run',
     eventDate: 'April 21, 2025',
-    id: 'amsterdam-run-2025'
+    id: 'amsterdam-run-2025',
+    mapPosition: { x: 48.9, y: 23.8 }
   },
   {
     city: 'Barcelona',
@@ -122,7 +139,8 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 41.3851, lng: 2.1734 },
     eventName: 'Barcelona Half Marathon',
     eventDate: 'May 7, 2025',
-    id: 'barcelona-half-2025'
+    id: 'barcelona-half-2025',
+    mapPosition: { x: 48.5, y: 28.8 }
   },
   {
     city: 'Lisbon',
@@ -130,7 +148,8 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 38.7223, lng: -9.1393 },
     eventName: 'Lisbon Waterfront 10K',
     eventDate: 'June 11, 2025',
-    id: 'lisbon-10k-2025'
+    id: 'lisbon-10k-2025',
+    mapPosition: { x: 45.2, y: 29.8 }
   },
   {
     city: 'Split',
@@ -138,7 +157,8 @@ const eventLocations: EventLocation[] = [
     coords: { lat: 43.5081, lng: 16.4402 },
     eventName: 'Split Coastal Marathon',
     eventDate: 'July 9, 2025',
-    id: 'split-marathon-2025'
+    id: 'split-marathon-2025',
+    mapPosition: { x: 51.5, y: 28.2 }
   }
 ];
 
@@ -167,32 +187,16 @@ export function EventMap() {
           }
         );
         
-        // Define a mapping function for a standard equirectangular map projection
-        const getMarkerPosition = (lat: number, lng: number) => {
-          // For a standard world map with equirectangular projection:
-          // Longitude: -180 to 180 degrees maps to 0-100% width
-          // Latitude: 90 to -90 degrees maps to 0-100% height
-          
-          // Convert longitude from -180...180 to 0...100%
-          const xPercent = ((lng + 180) / 360) * 100;
-          
-          // Convert latitude from 90...-90 to 0...100%
-          const yPercent = ((90 - lat) / 180) * 100;
-          
-          return { x: xPercent, y: yPercent };
-        };
-        
         // Create markers for each location
         eventLocations.forEach((location, index) => {
           const marker = document.createElement('div');
           marker.className = 'absolute w-4 h-4 md:w-6 md:h-6 bg-red-500 rounded-full cursor-pointer transform -translate-x-1/2 -translate-y-1/2 hover:scale-125 transition-transform shadow-xl border-2 border-white z-10';
           
-          // Get position using our mapping function
-          const position = getMarkerPosition(location.coords.lat, location.coords.lng);
-          
-          // Set position as percentage (works better for responsive layouts)
-          marker.style.left = `${position.x}%`;
-          marker.style.top = `${position.y}%`;
+          // Use direct map position instead of calculating from coordinates
+          if (location.mapPosition) {
+            marker.style.left = `${location.mapPosition.x}%`;
+            marker.style.top = `${location.mapPosition.y}%`;
+          }
           
           // Add custom marker label
           const label = document.createElement('div');
