@@ -3,11 +3,20 @@
 import { useEffect, useState } from 'react';
 import { Card } from './card';
 
+interface Quote {
+  text: string;
+  playedBy: string;
+  character: string;
+  film: string;
+  year: string | number;
+  dataSource: string;
+}
+
 const randomQuoteUrl = '/quotes/random';
 
 export function RandomQuote() {
-    const [quote, setQuote] = useState(null);
-    const [time, setTime] = useState(null);
+    const [quote, setQuote] = useState<Quote | null>(null);
+    const [time, setTime] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchQuote = async () => {
@@ -42,4 +51,4 @@ export function RandomQuote() {
             )}
         </Card>
     );
-}
+} 

@@ -1,14 +1,14 @@
 'use client';
 
+import { ReactNode, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { Card } from 'components/card';
-import { ContextAlert } from 'components/context-alert';
-import { Markdown } from 'components/markdown';
-import { RandomQuote } from 'components/random-quote';
-import { getNetlifyContext } from 'utils';
-import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Card } from './card';
+import { ContextAlert } from './context-alert';
+import { Markdown } from './markdown';
+import { RandomQuote } from './random-quote';
+import { getNetlifyContext } from '../utils';
 
 // Register GSAP plugins
 if (typeof window !== 'undefined') {
@@ -33,13 +33,17 @@ And as always with dynamic content, beware of layout shifts & flicker! (here, we
 
 const ctx = getNetlifyContext();
 
+interface AnimatedHomepageProps {
+  children?: ReactNode;
+}
+
 // Client-side only component with animations
-function AnimatedHomepage({ children }) {
-    const heroRef = useRef(null);
-    const headingRef = useRef(null);
-    const textRef = useRef(null);
-    const btnRef = useRef(null);
-    const sectionsRef = useRef([]);
+export function AnimatedHomepage({ children }: AnimatedHomepageProps) {
+    const heroRef = useRef<HTMLElement | null>(null);
+    const headingRef = useRef<HTMLHeadingElement | null>(null);
+    const textRef = useRef<HTMLParagraphElement | null>(null);
+    const btnRef = useRef<HTMLAnchorElement | null>(null);
+    const sectionsRef = useRef<HTMLElement[]>([]);
 
     useEffect(() => {
         // Hero animation
@@ -71,7 +75,7 @@ function AnimatedHomepage({ children }) {
         // Sections animation (on scroll)
         const sections = sectionsRef.current;
         if (sections.length) {
-            sections.forEach((section, i) => {
+            sections.forEach((section) => {
                 gsap.fromTo(section, 
                     { opacity: 0, y: 30 },
                     { 
@@ -102,23 +106,25 @@ function AnimatedHomepage({ children }) {
         // Button hover effect
         const btn = btnRef.current;
         if (btn) {
-            btn.addEventListener("mouseenter", () => {
+            const handleMouseEnter = () => {
                 gsap.to(btn, { scale: 1.05, duration: 0.3 });
-            });
-            btn.addEventListener("mouseleave", () => {
+            };
+            
+            const handleMouseLeave = () => {
                 gsap.to(btn, { scale: 1, duration: 0.3 });
-            });
-        }
+            };
+            
+            btn.addEventListener("mouseenter", handleMouseEnter);
+            btn.addEventListener("mouseleave", handleMouseLeave);
 
-        return () => {
-            if (btn) {
-                btn.removeEventListener("mouseenter", () => {});
-                btn.removeEventListener("mouseleave", () => {});
-            }
-        };
+            return () => {
+                btn.removeEventListener("mouseenter", handleMouseEnter);
+                btn.removeEventListener("mouseleave", handleMouseLeave);
+            };
+        }
     }, []);
 
-    const addToRefs = (el) => {
+    const addToRefs = (el: HTMLElement | null) => {
         if (el && !sectionsRef.current.includes(el)) {
             sectionsRef.current.push(el);
         }
@@ -147,17 +153,17 @@ function AnimatedHomepage({ children }) {
             {!!ctx && (
                 <section ref={addToRefs} className="flex flex-col gap-4">
                     <ContextAlert className="mb-6" />
-                    <Markdown content={contextExplainer} />
+                    <Markdown content={contextExplainer} className="" />
                     <RuntimeContextCard animated={true} />
                 </section>
             )}
             
             <section ref={addToRefs} className="flex flex-col gap-4">
-                <Markdown content={preDynamicContentExplainer} />
+                <Markdown content={preDynamicContentExplainer} className="" />
                 <div className="animated-card">
                     <RandomQuote />
                 </div>
-                <Markdown content={postDynamicContentExplainer} />
+                <Markdown content={postDynamicContentExplainer} className="" />
             </section>
 
             <section ref={addToRefs} className="feature-grid grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -174,11 +180,11 @@ function AnimatedHomepage({ children }) {
     );
 }
 
-export default function Page() {
-    return <AnimatedHomepage />;
+interface RuntimeContextCardProps {
+  animated?: boolean;
 }
 
-function RuntimeContextCard({ animated }) {
+function RuntimeContextCard({ animated }: RuntimeContextCardProps) {
     const title = `Netlify Context: running in ${ctx} mode.`;
     const cardClass = animated ? "animated-card" : "";
     
@@ -195,4 +201,4 @@ function RuntimeContextCard({ animated }) {
             </Card>
         );
     }
-}
+} 
