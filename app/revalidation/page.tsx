@@ -2,6 +2,7 @@ import { revalidateTag } from 'next/cache';
 import { Card } from 'components/card';
 import { Markdown } from 'components/markdown';
 import { SubmitButton } from 'components/submit-button';
+import { PageContainer } from 'components/page-container';
 
 export const metadata = {
     title: 'On-Demand Revalidation'
@@ -44,14 +45,14 @@ export default async function Page() {
     }
 
     return (
-        <>
+        <PageContainer className="py-8 md:py-12">
             <h1 className="mb-8">Revalidation Basics</h1>
             <Markdown content={explainer} className="mb-6" />
             <form className="mb-8" action={revalidateWiki}>
                 <SubmitButton text="Click to Revalidate" />
             </form>
             <RandomWikiArticle />
-        </>
+        </PageContainer>
     );
 }
 

@@ -17,6 +17,11 @@
 }
 
 @layer base {
+    /* Prevent scrolling when mobile menu is open */
+    html.menu-open {
+        overflow: hidden;
+    }
+    
     h1 {
         @apply text-4xl font-bold tracking-tight sm:text-5xl;
     }

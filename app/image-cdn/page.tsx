@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { ImageWithSizeOverlay } from './image-with-size-overlay';
 import { ContextAlert } from 'components/context-alert';
 import { Markdown } from 'components/markdown';
+import { PageContainer } from 'components/page-container';
 import { getNetlifyContext } from 'utils';
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
@@ -108,66 +109,68 @@ export default function Page() {
     };
 
     return (
-        <div className="flex flex-col gap-12 sm:gap-16">
-            <section>
-                <ContextAlert
-                    warningMessage={devModeWarning}
-                    className="mb-6"
-                />
-                <h1 ref={titleRef}>Image CDN</h1>
-            </section>
-            <section ref={addToRefs}>
-                <h2 className="mb-6">Using next/image component</h2>
-                <Markdown content={nextImageSnippet} className="mb-8" />
-                <figure ref={imageRef} className="transition-all">
-                    <div className="relative overflow-hidden border-2 border-white rounded-lg aspect-3/2 shadow-lg">
-                        <Image
-                            src="/images/corgi.jpg"
-                            priority
-                            fill={true}
-                            style={{ objectFit: 'contain' }}
-                            sizes="(max-width: 1024px) 100vw, 1024px"
-                            alt="Corgi"
-                        />
-                    </div>
-                    <figcaption className="mt-2 text-sm italic">
-                        Credit: photo by{' '}
-                        <a href="https://unsplash.com/@alvannee?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
-                            Alvan Nee
-                        </a>{' '}
-                        on{' '}
-                        <a href="https://unsplash.com/photos/long-coated-white-and-brown-dog-lvFlpqEvuRM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
-                            Unsplash
-                        </a>
-                    </figcaption>
-                </figure>
-            </section>
-            <section ref={addToRefs}>
-                <h2 className="mb-6">Original vs. optimized image: can you tell the difference?</h2>
-                <Markdown content={originalVsCdnSnippet} className="mb-8" />
-                <figure
-                    ref={compareRef}
-                    className="relative grid w-full overflow-hidden border-2 border-white rounded-lg select-none diff aspect-3/2 shadow-lg"
-                    tabIndex={0}
-                >
-                    <div className="relative col-start-1 row-start-1 overflow-hidden border-r-2 z-1 border-r-white diff-item-1">
-                        <div>
-                            <ImageWithSizeOverlay src="/images/corgi.jpg" />
-                        </div>
-                    </div>
-                    <div className="relative col-start-1 row-start-1 diff-item-2" tabIndex={0}>
-                        <div>
-                            <ImageWithSizeOverlay
-                                src={sampleImage}
-                                srcSet={sampleImageSrcSet}
-                                sizes={sampleImageSrcSet}
-                                overlayPosition="right"
+        <PageContainer className="py-8 md:py-12">
+            <div className="flex flex-col gap-12 sm:gap-16">
+                <section>
+                    <ContextAlert
+                        warningMessage={devModeWarning}
+                        className="mb-6"
+                    />
+                    <h1 ref={titleRef}>Image CDN</h1>
+                </section>
+                <section ref={addToRefs}>
+                    <h2 className="mb-6">Using next/image component</h2>
+                    <Markdown content={nextImageSnippet} className="mb-8" />
+                    <figure ref={imageRef} className="transition-all">
+                        <div className="relative overflow-hidden border-2 border-white rounded-lg aspect-3/2 shadow-lg">
+                            <Image
+                                src="/images/corgi.jpg"
+                                priority
+                                fill={true}
+                                style={{ objectFit: 'contain' }}
+                                sizes="(max-width: 1024px) 100vw, 1024px"
+                                alt="Corgi"
                             />
                         </div>
-                    </div>
-                    <div className="relative h-2 col-start-1 row-start-1 overflow-hidden opacity-0 resize-x diff-resizer z-1 min-w-4 cursor-ew-resize top-1/2"></div>
-                </figure>
-            </section>
-        </div>
+                        <figcaption className="mt-2 text-sm italic">
+                            Credit: photo by{' '}
+                            <a href="https://unsplash.com/@alvannee?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+                                Alvan Nee
+                            </a>{' '}
+                            on{' '}
+                            <a href="https://unsplash.com/photos/long-coated-white-and-brown-dog-lvFlpqEvuRM?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">
+                                Unsplash
+                            </a>
+                        </figcaption>
+                    </figure>
+                </section>
+                <section ref={addToRefs}>
+                    <h2 className="mb-6">Original vs. optimized image: can you tell the difference?</h2>
+                    <Markdown content={originalVsCdnSnippet} className="mb-8" />
+                    <figure
+                        ref={compareRef}
+                        className="relative grid w-full overflow-hidden border-2 border-white rounded-lg select-none diff aspect-3/2 shadow-lg"
+                        tabIndex={0}
+                    >
+                        <div className="relative col-start-1 row-start-1 overflow-hidden border-r-2 z-1 border-r-white diff-item-1">
+                            <div>
+                                <ImageWithSizeOverlay src="/images/corgi.jpg" />
+                            </div>
+                        </div>
+                        <div className="relative col-start-1 row-start-1 diff-item-2" tabIndex={0}>
+                            <div>
+                                <ImageWithSizeOverlay
+                                    src={sampleImage}
+                                    srcSet={sampleImageSrcSet}
+                                    sizes={sampleImageSrcSet}
+                                    overlayPosition="right"
+                                />
+                            </div>
+                        </div>
+                        <div className="relative h-2 col-start-1 row-start-1 overflow-hidden opacity-0 resize-x diff-resizer z-1 min-w-4 cursor-ew-resize top-1/2"></div>
+                    </figure>
+                </section>
+            </div>
+        </PageContainer>
     );
 }

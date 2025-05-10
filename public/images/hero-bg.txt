@@ -1,0 +1,10 @@
+This is a placeholder for the hero background image file.
+In a real implementation, you would place an actual image file (e.g., jpg, png) here.
+
+For now, we're using the existing corgi.jpg image, but ideally you would replace it with:
+- A high-resolution tech/coding themed image
+- A dark modern background showing code or technology
+- A video showing app development/deployment process
+
+Recommended image dimensions: 1920x1080px minimum
+Optimal format: WebP or JPEG with good compression 
