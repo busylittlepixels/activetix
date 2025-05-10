@@ -53,17 +53,19 @@ detection, so format is set to WebP.
 `;
 
 export default function Page() {
-    const titleRef = useRef(null);
-    const imageRef = useRef(null);
-    const compareRef = useRef(null);
-    const sectionsRef = useRef([]);
+    const titleRef = useRef<HTMLHeadingElement>(null);
+    const imageRef = useRef<HTMLElement>(null);
+    const compareRef = useRef<HTMLElement>(null);
+    const sectionsRef = useRef<HTMLElement[]>([]);
 
     useEffect(() => {
         // Animate title
-        gsap.fromTo(titleRef.current,
-            { opacity: 0, y: -20 },
-            { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
-        );
+        if (titleRef.current) {
+            gsap.fromTo(titleRef.current,
+                { opacity: 0, y: -20 },
+                { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
+            );
+        }
 
         // Animate sections
         const sections = sectionsRef.current;
@@ -99,7 +101,7 @@ export default function Page() {
         }
     }, []);
 
-    const addToRefs = (el) => {
+    const addToRefs = (el: HTMLElement | null) => {
         if (el && !sectionsRef.current.includes(el)) {
             sectionsRef.current.push(el);
         }
@@ -146,16 +148,17 @@ export default function Page() {
                 <figure
                     ref={compareRef}
                     className="relative grid w-full overflow-hidden border-2 border-white rounded-lg select-none diff aspect-3/2 shadow-lg"
-                    tabIndex="0"
+                    tabIndex={0}
                 >
                     <div className="relative col-start-1 row-start-1 overflow-hidden border-r-2 z-1 border-r-white diff-item-1">
                         <div>
                             <ImageWithSizeOverlay src="/images/corgi.jpg" />
                         </div>
                     </div>
-                    <div className="relative col-start-1 row-start-1 diff-item-2" tabIndex="0">
+                    <div className="relative col-start-1 row-start-1 diff-item-2" tabIndex={0}>
                         <div>
                             <ImageWithSizeOverlay
+                                src={sampleImage}
                                 srcSet={sampleImageSrcSet}
                                 sizes={sampleImageSrcSet}
                                 overlayPosition="right"

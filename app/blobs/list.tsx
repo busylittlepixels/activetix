@@ -4,10 +4,31 @@ import { listShapesAction, getShapeAction } from './actions';
 import { ShapeRenderer } from './renderer';
 import { generateBlob } from './generator';
 
-export function StoredBlobsList({ lastMutationTime }) {
-    const [keys, setKeys] = useState([]);
-    const [selectedKey, setSelectedKey] = useState();
-    const [previewData, setPreviewData] = useState();
+interface BlobParameters {
+  seed: string | null;
+  edges: number;
+  growth: number;
+  colors: string[];
+  name: string;
+}
+
+interface BlobResult {
+  parameters: BlobParameters;
+  svgPath: string;
+}
+
+interface StoredBlobsListProps {
+  lastMutationTime: number;
+}
+
+interface BlobPreviewProps {
+  data: BlobParameters;
+}
+
+export function StoredBlobsList({ lastMutationTime }: StoredBlobsListProps) {
+    const [keys, setKeys] = useState<string[]>([]);
+    const [selectedKey, setSelectedKey] = useState<string | undefined>();
+    const [previewData, setPreviewData] = useState<BlobParameters | null>();
 
     useEffect(() => {
         console.log('Fetching keys...');
@@ -16,7 +37,7 @@ export function StoredBlobsList({ lastMutationTime }) {
         });
     }, [lastMutationTime]);
 
-    const onSelect = async (keyName) => {
+    const onSelect = async (keyName: string) => {
         setSelectedKey(keyName);
         const data = await getShapeAction({ keyName });
         setPreviewData(data);
@@ -59,7 +80,7 @@ export function StoredBlobsList({ lastMutationTime }) {
     );
 }
 
-function BlobPreview({ data }) {
+function BlobPreview({ data }: BlobPreviewProps) {
     const fullBlobData = generateBlob(data); // Recreates the SVG path by the existing parameters
     return (
         <div className="p-4 border-t border-neutral-300 aspect-square">

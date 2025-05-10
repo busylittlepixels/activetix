@@ -38,16 +38,18 @@ User uploads are disabled in this site. To run your own and try it out:
 `;
 
 export default function Page() {
-    const titleRef = useRef(null);
-    const contentRef = useRef(null);
-    const editorRef = useRef(null);
+    const titleRef = useRef<HTMLHeadingElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
+    const editorRef = useRef<HTMLDivElement>(null);
     
     useEffect(() => {
         // Animate title
-        gsap.fromTo(titleRef.current,
-            { opacity: 0, y: -20 },
-            { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
-        );
+        if (titleRef.current) {
+            gsap.fromTo(titleRef.current,
+                { opacity: 0, y: -20 },
+                { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
+            );
+        }
         
         // Animate content
         if (contentRef.current) {

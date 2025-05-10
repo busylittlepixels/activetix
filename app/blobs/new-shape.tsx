@@ -6,17 +6,33 @@ import { ShapeRenderer } from './renderer';
 import { uploadShapeAction } from './actions';
 import { uploadDisabled } from 'utils';
 
-export function NewShape(props) {
+interface BlobData {
+  parameters: {
+    seed: string | null;
+    edges: number;
+    growth: number;
+    colors: string[];
+    name: string;
+  };
+  svgPath: string;
+}
+
+interface NewShapeProps {
+  setLastMutationTime: (time: number) => void;
+}
+
+export function NewShape(props: NewShapeProps) {
     const { setLastMutationTime } = props;
-    const [blobData, setBlobData] = useState();
+    const [blobData, setBlobData] = useState<BlobData | undefined>();
     const [wasUploaded, setWasUploaded] = useState(false);
 
     const randomizeBlob = () => {
-        setBlobData(generateBlob());
+        setBlobData(generateBlob({}));
         setWasUploaded(false);
     };
 
     const onUpload = async () => {
+        if (!blobData) return;
         await uploadShapeAction({ parameters: blobData.parameters });
         setWasUploaded(true);
         setLastMutationTime(Date.now());

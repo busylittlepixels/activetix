@@ -1,24 +1,33 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, FormEvent } from 'react';
 import { Alert } from './alert';
 import { Card } from './card';
 
-export function FeedbackForm() {
-    const [status, setStatus] = useState(null);
-    const [error, setError] = useState(null);
+type FormStatus = 'pending' | 'ok' | 'error' | null;
 
-    const handleFormSubmit = async (event) => {
+export function FeedbackForm() {
+    const [status, setStatus] = useState<FormStatus>(null);
+    const [error, setError] = useState<string | null>(null);
+
+    const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
             setStatus('pending');
             setError(null);
-            const myForm = event.target;
+            const myForm = event.target as HTMLFormElement;
             const formData = new FormData(myForm);
+            
+            // Convert FormData to an object that URLSearchParams can use
+            const formDataObj: Record<string, string> = {};
+            formData.forEach((value, key) => {
+                formDataObj[key] = value.toString();
+            });
+            
             const res = await fetch('/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(formData).toString()
+                body: new URLSearchParams(formDataObj).toString()
             });
             if (res.status === 200) {
                 setStatus('ok');

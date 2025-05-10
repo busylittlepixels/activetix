@@ -3,14 +3,21 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { getResourceSize } from 'utils';
 
-export function ImageWithSizeOverlay({ src, srcSet, sizes, overlayPosition }) {
-    const imageRef = useRef();
-    const [imgSize, setImgSize] = useState(undefined);
+interface ImageWithSizeOverlayProps {
+  src: string;
+  srcSet?: string;
+  sizes?: string;
+  overlayPosition?: 'left' | 'right';
+}
+
+export function ImageWithSizeOverlay({ src, srcSet, sizes, overlayPosition }: ImageWithSizeOverlayProps) {
+    const imageRef = useRef<HTMLImageElement>(null);
+    const [imgSize, setImgSize] = useState<number | undefined>(undefined);
 
     const handleImageLoad = useCallback(() => {
         const imgElement = imageRef.current;
         if (imgElement?.complete) {
-            const size = getResourceSize(imgElement?.currentSrc);
+            const size = getResourceSize(imgElement.currentSrc);
             setImgSize(size);
         } else {
             setImgSize(undefined);
