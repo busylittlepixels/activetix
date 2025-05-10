@@ -13,10 +13,6 @@ interface HeroProps {
     text: string;
     href: string;
   };
-  secondaryCta?: {
-    text: string;
-    href: string;
-  };
   backgroundType: 'image' | 'video';
   backgroundSrc: string;
 }
@@ -26,7 +22,6 @@ export function Hero({
   title,
   subtitle,
   primaryCta,
-  secondaryCta,
   backgroundType,
   backgroundSrc
 }: HeroProps) {
@@ -138,7 +133,7 @@ export function Hero({
         
         <h1 
           ref={titleRef}
-          className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-50 max-w-4xl"
+          className="text-5xl md:text-5xl lg:text-6xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-100 to-blue-50 max-w-4xl"
         >
           {title}
         </h1>
@@ -154,7 +149,7 @@ export function Hero({
           {primaryCta && (
             <Link
               href={primaryCta.href}
-              className="btn bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105"
+              className="btn bg-blue-600 max-w-1/2 hover:bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105"
             >
               {primaryCta.text}
             </Link>

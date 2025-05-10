@@ -165,10 +165,6 @@ export default function Page() {
           text: "Find Events",
           href: "/events"
         }}
-        secondaryCta={{
-          text: "How It Works",
-          href: "/how-it-works"
-        }}
         backgroundType="image"
         backgroundSrc="/images/hero/marathon-runners.jpg"
       />
