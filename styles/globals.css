@@ -19,7 +19,7 @@
 /* View Transitions API styles */
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 0.5s;
+  animation-duration: 0.2s;
 }
 
 ::view-transition-old(root) {
@@ -29,7 +29,7 @@
 ::view-transition-new(root) {
   animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   animation-fill-mode: both;
-  animation-delay: 0.1s;
+  animation-delay: 0.05s;
 }
 
 /* Hero section transition */
