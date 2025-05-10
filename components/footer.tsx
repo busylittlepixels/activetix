@@ -73,7 +73,7 @@ export function Footer() {
                 <div className="space-y-4 max-w-xs">
                     <h4 className="text-lg font-semibold text-white">Netlify + Next.js</h4>
                     <p className="text-sm text-blue-200">
-                        Deploy modern web projects with Netlify's all-in-one platform and Next.js, the React framework for production.
+                        Deploy modern web projects with Netlify&apos;s all-in-one platform and Next.js, the React framework for production.
                     </p>
                 </div>
                 
