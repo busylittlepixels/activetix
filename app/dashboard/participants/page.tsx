@@ -8,7 +8,7 @@ const participants = [
     id: 'p1', 
     name: 'John Doe', 
     email: 'john.doe@example.com',
-    phone: '+1 (555) 123-4567',
+    phone: '+31 (6) 180-66163',
     eventId: 'boston-marathon-2025',
     eventName: 'Boston Marathon 2025',
     registrationDate: '2024-01-15',

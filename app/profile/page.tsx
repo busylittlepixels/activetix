@@ -18,7 +18,7 @@ const userData = {
   id: 'user123',
   name: 'Ro O\'Leary',
   email: 'roleary81@gmail.com',
-  phone: '+1 (555) 123-4567',
+  phone: '+31 (6) 180-66163',
   dateJoined: '2023-04-15',
   profileImage: '/images/profile/me.jpg'
 };
