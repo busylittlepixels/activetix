@@ -48,7 +48,7 @@ const gridImages = [
     link: '/events/nyc-marathon' 
   },
   { 
-    src: 'https://images.unsplash.com/photo-1596727362302-b8d891c22e52?q=80&w=800&auto=format&fit=crop', 
+    src: '/images/events/boston-marathon.jpg', 
     alt: 'Runners on mountain trail', 
     hoverText: 'Trail Running Series', 
     link: '/events/trail-series' 
@@ -165,8 +165,8 @@ export default function Page() {
           text: "Find Events",
           href: "/events"
         }}
-        backgroundType="image"
-        backgroundSrc="/images/events/boston-marathon.jpg"
+        backgroundType="video"
+        backgroundSrc="/videos/ActiveTixHero.mp4"
       />
       
       {/* Two-column CTA section */}

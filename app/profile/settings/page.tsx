@@ -14,13 +14,14 @@ const tabs = [
 ];
 
 // Dummy user data
+// Dummy user data
 const userData = {
   id: 'user123',
-  name: 'Alex Johnson',
-  email: 'alex.johnson@example.com',
+  name: 'Ro O\'Leary',
+  email: 'roleary81@gmail.com',
   phone: '+1 (555) 123-4567',
   dateJoined: '2023-04-15',
-  profileImage: 'https://randomuser.me/api/portraits/men/32.jpg'
+  profileImage: '/images/profile/me.jpg'
 };
 
 // Dummy settings data

@@ -30,7 +30,7 @@ export function PageContainer({
   
   return (
     <div className={`w-full ${headerSpacing} ${className}`}>
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto max-sm:px-4">
         {children}
       </div>
     </div>

@@ -6,11 +6,13 @@ import Link from 'next/link';
 
 const navItems = [
     { linkText: 'Home', href: '/' },
-    { linkText: 'Revalidation', href: '/revalidation' },
-    { linkText: 'Image CDN', href: '/image-cdn' },
-    { linkText: 'Edge Function', href: '/edge' },
-    { linkText: 'Blobs', href: '/blobs' },
-    { linkText: 'Classics', href: '/classics' }
+    // { linkText: 'Revalidation', href: '/revalidation' },
+    // { linkText: 'Image CDN', href: '/image-cdn' },
+    // { linkText: 'Edge Function', href: '/edge' },
+    // { linkText: 'Blobs', href: '/blobs' },
+    { linkText: 'Events', href: '/events' },
+    { linkText: 'Organizers', href: '/organizers' },
+    { linkText: 'Members', href: '/members' }
 ];
 
 export function Header() {
@@ -131,6 +133,12 @@ export function Header() {
                             >
                                 Login
                             </Link>
+                            <Link
+                                href="/register"
+                                className="px-4 py-1.5 text-sm bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-all no-underline"
+                            >
+                                Register
+                            </Link>
                         </div>
                     </div>
                     
@@ -185,6 +193,13 @@ export function Header() {
                                         onClick={() => setMobileMenuOpen(false)}
                                     >
                                         Login
+                                    </Link>
+                                    <Link
+                                        href="/register"
+                                        className="flex justify-center items-center py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors no-underline"
+                                        onClick={() => setMobileMenuOpen(false)}
+                                    >
+                                        Register
                                     </Link>
                                 </div>
                             </div>

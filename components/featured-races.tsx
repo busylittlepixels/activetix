@@ -5,6 +5,7 @@ import { EventCard, EventCardProps } from './event-card';
 import { RaceSearch } from './race-search';
 import { PageContainer } from './page-container';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import gsap from 'gsap';
 
 // Mock data
@@ -185,9 +186,32 @@ export const raceEvents: EventCardProps[] = [
 ];
 
 export function FeaturedRaces() {
-  const [displayedEvents, setDisplayedEvents] = useState<EventCardProps[]>(raceEvents);
+  const router = useRouter();
+  const [allEvents, setAllEvents] = useState<EventCardProps[]>(raceEvents);
+  const [displayedEvents, setDisplayedEvents] = useState<EventCardProps[]>([]);
+  const [paginationCount, setPaginationCount] = useState(1);
+  const eventsPerPage = 8;
+  
   const sectionRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  
+  // Initialize with first 8 events
+  useEffect(() => {
+    setDisplayedEvents(allEvents.slice(0, eventsPerPage));
+  }, [allEvents]);
+  
+  // Handle load more button click
+  const handleLoadMore = () => {
+    if (paginationCount === 1) {
+      // First click: Load 16 events total
+      setDisplayedEvents(allEvents.slice(0, eventsPerPage * 2));
+      setPaginationCount(2);
+    } else {
+      // Second click: Redirect to events page
+      router.push('/events');
+    }
+  };
   
   useEffect(() => {
     if (sectionRef.current && titleRef.current) {
@@ -206,7 +230,25 @@ export function FeaturedRaces() {
         { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }
       );
     }
-  }, []);
+    
+    // Animate the newly loaded cards when more are shown
+    if (gridRef.current) {
+      const newCards = gridRef.current.querySelectorAll('.event-card-item');
+      if (newCards.length > 0) {
+        gsap.fromTo(
+          newCards,
+          { y: 20, opacity: 0 },
+          { 
+            y: 0, 
+            opacity: 1, 
+            duration: 0.4,
+            stagger: 0.05,
+            ease: 'power2.out'
+          }
+        );
+      }
+    }
+  }, [displayedEvents]);
   
   const handleSearch = (filters: any) => {
     let filteredEvents = [...raceEvents];
@@ -245,7 +287,10 @@ export function FeaturedRaces() {
       );
     }
     
-    setDisplayedEvents(filteredEvents);
+    setAllEvents(filteredEvents);
+    // Reset pagination when search is performed
+    setPaginationCount(1);
+    setDisplayedEvents(filteredEvents.slice(0, eventsPerPage));
   };
   
   return (
@@ -278,9 +323,11 @@ export function FeaturedRaces() {
         </div>
         
         {displayedEvents.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {displayedEvents.map((event) => (
-              <EventCard key={event.id} {...event} />
+              <div key={event.id} className="event-card-item">
+                <EventCard {...event} />
+              </div>
             ))}
           </div>
         ) : (
@@ -291,15 +338,27 @@ export function FeaturedRaces() {
         )}
         
         <div className="mt-12 text-center">
-          <Link 
-            href="/events"
-            className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
-          >
-            View All Events
-            <svg className="ml-2 -mr-1 w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </Link>
+          {displayedEvents.length < allEvents.length || paginationCount > 1 ? (
+            <button
+              onClick={handleLoadMore}
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+            >
+              {paginationCount === 1 ? "Load More Events" : "View All Events"}
+              <svg className="ml-2 -mr-1 w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          ) : (
+            <Link 
+              href="/events"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-colors"
+            >
+              View All Events
+              <svg className="ml-2 -mr-1 w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </Link>
+          )}
         </div>
       </PageContainer>
     </section>

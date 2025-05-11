@@ -16,11 +16,11 @@ const tabs = [
 // Dummy user data
 const userData = {
   id: 'user123',
-  name: 'Alex Johnson',
-  email: 'alex.johnson@example.com',
+  name: 'Ro O\'Leary',
+  email: 'roleary81@gmail.com',
   phone: '+1 (555) 123-4567',
   dateJoined: '2023-04-15',
-  profileImage: 'https://randomuser.me/api/portraits/men/32.jpg'
+  profileImage: '/images/profile/me.jpg'
 };
 
 export default function ProfilePage() {
@@ -102,7 +102,7 @@ export default function ProfilePage() {
                       id="firstName"
                       name="firstName"
                       type="text"
-                      defaultValue="Alex"
+                      defaultValue="Ronan"
                       className="w-full p-3 bg-black/50 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                     />
                   </div>
@@ -115,7 +115,7 @@ export default function ProfilePage() {
                       id="lastName"
                       name="lastName"
                       type="text"
-                      defaultValue="Johnson"
+                      defaultValue="O'Leary"
                       className="w-full p-3 bg-black/50 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                     />
                   </div>
@@ -154,7 +154,7 @@ export default function ProfilePage() {
                       id="dateOfBirth"
                       name="dateOfBirth"
                       type="date"
-                      defaultValue="1990-06-15"
+                      defaultValue="1981-01-24"
                       className="w-full p-3 bg-black/50 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                     />
                   </div>
@@ -188,7 +188,7 @@ export default function ProfilePage() {
                       id="address"
                       name="address"
                       type="text"
-                      defaultValue="123 Runner's Lane"
+                      defaultValue="Spaarndammerdijk"
                       className="w-full p-3 bg-black/50 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                     />
                   </div>
@@ -201,7 +201,7 @@ export default function ProfilePage() {
                       id="city"
                       name="city"
                       type="text"
-                      defaultValue="Boston"
+                      defaultValue="Amsterdam"
                       className="w-full p-3 bg-black/50 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                     />
                   </div>
@@ -214,7 +214,7 @@ export default function ProfilePage() {
                       id="state"
                       name="state"
                       type="text"
-                      defaultValue="Massachusetts"
+                      defaultValue="Noord-Holland"
                       className="w-full p-3 bg-black/50 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                     />
                   </div>
@@ -227,7 +227,7 @@ export default function ProfilePage() {
                       id="postalCode"
                       name="postalCode"
                       type="text"
-                      defaultValue="02108"
+                      defaultValue="1011"
                       className="w-full p-3 bg-black/50 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                     />
                   </div>
@@ -240,7 +240,7 @@ export default function ProfilePage() {
                       id="country"
                       name="country"
                       type="text"
-                      defaultValue="United States"
+                      defaultValue="Netherlands"
                       className="w-full p-3 bg-black/50 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-blue-600 focus:border-transparent"
                     />
                   </div>
